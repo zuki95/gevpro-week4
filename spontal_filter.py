@@ -3,17 +3,17 @@
 #spontal_filter.py
 
 import sys
+import xml.etree.ElementTree as ET
 
 def main(argv):
 	#Input file is argv[1] and destination file is argv[2]
 	source = argv[1]
 	destination = argv[2]
-	#Imports xml file
-	import xml.etree.ElementTree as ET
+	
 	tree = ET.parse(source)
 	root = tree.getroot()
     #Iterates over the points in the corpus of the file
-	for POINT in root.findall('POINT'):
+	for POINT in root:
 		
 		BOTTOM_HZ = float(POINT.find('BOTTOM_HZ').text)
 		TOP_HZ = float(POINT.find('TOP_HZ').text)
